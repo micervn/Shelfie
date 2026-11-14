@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shelfie</title>
+<meta name="description" content="A cozy, offline reader for your EPUBs and PDFs.">
+<meta name="theme-color" content="#F0E8DA">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Shelfie">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="stylesheet" href="styles.css">
+<script>window.SHELFIE_VERSION = '1.0.0e3909'</script>
+</head>
+<body>
+<div id="app">
+  <main id="main">
+    <section id="view-shelf" class="view" aria-label="Bookshelf"></section>
+    <section id="view-habits" class="view" aria-label="Reading habits"></section>
+    <section id="view-quotes" class="view" aria-label="Saved quotes"></section>
+    <section id="view-settings" class="view" aria-label="Settings"></section>
+  </main>
+  <nav id="nav" aria-label="Main"></nav>
+</div>
+<div id="reader" hidden></div>
+<div id="sheet" class="sheet-wrap"></div>
+<div id="install" hidden></div>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript>Shelfie needs JavaScript turned on.</noscript>
+<script type="module" src="app.js"></script>
+</body>
+</html>
