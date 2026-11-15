@@ -1,5 +1,5 @@
 // Shelfie offline support: keeps the app's own files on the device. Your books live in on-device storage, not here.
-const VERSION = '1.0.0e3909'
+const VERSION = '1.0.9fef63'
 const CACHE = 'shelfie-' + VERSION
 const FILES = [
  "./",

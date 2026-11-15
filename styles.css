@@ -13,7 +13,7 @@
   --st:env(safe-area-inset-top,0px);--sr:env(safe-area-inset-right,0px);--sb:env(safe-area-inset-bottom,0px);--sl:env(safe-area-inset-left,0px);
   --ui:'Bricolage Grotesque',system-ui,-apple-system,sans-serif;
 }
-.dark{--bg:#0B0430;--card:#150667;--fg:#F0E8DA;--line:rgba(240,232,218,.6);--muted:#CFC6E6;--track:rgba(240,232,218,.2);--accent:#04B18F;--accent-fg:#040306}
+.dark{--bg:#1D2025;--card:#2A2E35;--fg:#E6E1D8;--line:rgba(230,225,216,.6);--muted:#C4C7CE;--track:rgba(240,232,218,.2);--accent:#04B18F;--accent-fg:#040306}
 *{box-sizing:border-box}
 html,body{height:100%;margin:0}
 body{background:var(--paper);color:var(--ink);font-family:var(--ui);font-size:16px;line-height:1.35;overflow:hidden;overscroll-behavior:none;
@@ -248,7 +248,7 @@ h2{font-size:21px;font-weight:800;line-height:1.15}
 
 /* ---------- reader ---------- */
 #reader{position:fixed;inset:0;z-index:50;background:var(--rbg,#F0E8DA);color:var(--rfg,#040306);--bg:var(--rbg);--fg:var(--rfg);--card:color-mix(in srgb,var(--rbg) 86%,#fff)}
-#reader.dark{--line:rgba(240,232,218,.6);--muted:#CFC6E6;--track:rgba(240,232,218,.2);--card:#0B0430}
+#reader.dark{--line:rgba(230,225,216,.6);--muted:#C4C7CE;--track:rgba(230,225,216,.2);--card:#1D2025}
 #reader::before{content:'';position:absolute;inset:0;pointer-events:none;color:color-mix(in srgb,var(--rfg) 5%,transparent);background-image:radial-gradient(currentColor .8px,transparent 1.2px);background-size:3.5px 3.5px}
 .r-stage{position:absolute;top:var(--st);right:var(--sr);bottom:var(--sb);left:var(--sl);transition:opacity .13s linear}
 foliate-view{display:block;width:100%;height:100%}
@@ -404,3 +404,22 @@ foliate-view{display:block;width:100%;height:100%}
 #toast{position:fixed;z-index:120;left:50%;top:calc(var(--st) + 14px);transform:translate(-50%,-20px);max-width:calc(100% - 32px);background:var(--ink);color:var(--paper);border:2px solid var(--paper);border-radius:18px;padding:10px 16px;font-size:14.5px;font-weight:700;text-align:center;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;box-shadow:3px 3px 0 var(--mint)}
 #toast.on{opacity:1;transform:translate(-50%,0)}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01s !important;transition-duration:.01s !important}}
+
+/* ---------- celebrations ---------- */
+.fx-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:130;pointer-events:none}
+.fx-banner{position:fixed;z-index:131;left:50%;top:42%;transform:translate(-50%,-50%) rotate(-3deg);pointer-events:none;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;
+  background:var(--mint);color:var(--ink);border:2px solid var(--ink);border-radius:26px;padding:18px 26px;box-shadow:6px 6px 0 var(--ink);max-width:calc(100% - 48px);animation:pop .45s cubic-bezier(.2,1.6,.4,1)}
+.fx-banner b{font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.05}
+.fx-banner span{font-size:15px;font-weight:600}
+.fx-banner.year{background:var(--tomato);color:var(--paper);box-shadow:6px 6px 0 var(--indigo)}
+.fx-banner.year b{font-family:'UnifrakturMaguntia',serif;font-weight:400;font-size:38px;letter-spacing:0}
+.fx-banner.bye{opacity:0;transition:opacity .4s}
+@keyframes pop{from{transform:translate(-50%,-50%) rotate(-3deg) scale(.4);opacity:0}to{transform:translate(-50%,-50%) rotate(-3deg) scale(1);opacity:1}}
+/* ---------- compact quotes ---------- */
+.qrows{display:flex;flex-direction:column;border:2px solid var(--ink);border-radius:20px;background:var(--card);overflow:hidden}
+.qrow{display:flex;align-items:stretch;gap:12px;min-height:56px;padding:10px 14px 10px 10px;border:none;border-bottom:2px solid var(--ink);background:transparent;text-align:left;width:100%}
+.qrow:last-child{border-bottom:none}
+.qrow i{width:8px;flex:none;border-radius:4px;border:1.5px solid var(--ink)}
+.qrow span{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.qrow b{font-family:'Literata',Georgia,serif;font-style:italic;font-weight:400;font-size:15px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.qrow small{font-size:12.5px;font-weight:600;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
