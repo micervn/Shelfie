@@ -1,5 +1,5 @@
 // Shelfie offline support: keeps the app's own files on the device. Your books live in on-device storage, not here.
-const VERSION = '1.0.9fef63'
+const VERSION = '1.0.bd50d2'
 const CACHE = 'shelfie-' + VERSION
 const FILES = [
  "./",
@@ -37,6 +37,24 @@ self.addEventListener('activate', e => {
 })
 self.addEventListener('fetch', e => {
     const url = new URL(e.request.url)
+    // Android "Share → Shelfie": keep the shared books for the app to pick up, then open it
+    if (e.request.method === 'POST' && url.origin === location.origin && url.pathname.endsWith('/share-target')) {
+        e.respondWith((async () => {
+            let n = 0
+            try {
+                const form = await e.request.formData()
+                const inbox = await caches.open('inbox-shelfie')
+                for (const f of form.getAll('books')) {
+                    if (!f || typeof f === 'string') continue
+                    await inbox.put(new URL(`inbox/${Date.now()}-${n++}`, self.registration.scope).href, new Response(f, {
+                        headers: { 'x-name': encodeURIComponent(f.name || 'book'), 'content-type': f.type || 'application/octet-stream' },
+                    }))
+                }
+            } catch (err) { console.warn(err) }
+            return Response.redirect(new URL(`index.html?shared=${n}`, self.registration.scope).href, 303)
+        })())
+        return
+    }
     if (e.request.method !== 'GET' || url.origin !== location.origin) return
     e.respondWith(caches.open(CACHE).then(async cache => {
         const hit = await cache.match(e.request, { ignoreSearch: true })
