@@ -60,7 +60,11 @@
             ".fb2",
             ".fbz",
             ".cbz",
-            ".txt"
+            ".txt",
+            "text/html",
+            "application/xhtml+xml",
+            ".html",
+            ".htm"
           ]
         }
       ]

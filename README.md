@@ -3,7 +3,8 @@
 A cozy, offline reader for ebooks and PDFs. Runs as an installed web app on **iPhone, iPad and Android**.
 Books, covers, highlights and reading stats are stored only on the device.
 
-Reads: **EPUB, PDF, MOBI, AZW3, FB2 / FBZ, CBZ (comics) and TXT**. Books must be DRM-free
+Reads: **EPUB, PDF, MOBI, AZW3, FB2 / FBZ, CBZ (comics), HTML and TXT**.
+HTML books are split into chapters at their headings; pictures embedded in the file come along, pictures that were separate files don't. Books must be DRM-free
 (books bought in Kindle, Google Play Books or Apple Books are usually copy-protected and won't open).
 
 ## Put it online (free, GitHub Pages)
